@@ -1,0 +1,33 @@
+ARG RUBY_VERSION=3.4.1
+FROM ruby:$RUBY_VERSION-slim
+
+# Install system dependencies
+RUN apt-get update -qq && apt-get install -y --no-install-recommends \
+  build-essential libpq-dev \
+  && rm -rf /var/lib/apt/lists/*
+
+# Set working directory
+WORKDIR /app
+
+# Copy Gemfile first for caching and install gems
+COPY Gemfile Gemfile.lock ./
+RUN bundle install
+
+# Copy the entire application code
+COPY . /app
+
+# Create non-root user
+RUN groupadd --system --gid 1000 rails && \
+  useradd rails --uid 1000 --gid 1000 --create-home --shell /bin/bash && \
+  chown -R rails:rails /app
+
+# Ensure log directory exists with correct permissions
+RUN mkdir -p /app/log && \
+  chown -R rails:rails /app/log && \
+  chmod -R 755 /app/log
+
+# Use non-root user
+USER rails
+
+# Default command: Start the Rails server
+CMD ["bin/rails", "server", "-b", "0.0.0.0"]
