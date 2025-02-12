@@ -20,11 +20,24 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 development:
-  <<: *default
-  database: hello_solid_queue_development
-  host: db
-  username: postgres
-  password: postgres
+  primary: &primary_development
+    <<: *default
+    database: hello_solid_queue_development
+    host: db
+    username: postgres
+    password: postgres
+  cache:
+    <<: *primary_development
+    database: hello_solid_queue_development_cache
+    migrations_paths: db/cache_migrate
+  queue:
+    <<: *primary_development
+    database: hello_solid_queue_development_queue
+    migrations_paths: db/queue_migrate
+  cable:
+    <<: *primary_development
+    database: hello_solid_queue_development_cable
+    migrations_paths: db/cable_migrate
 
   # The specified database role being used to connect to PostgreSQL.
   # To create additional roles in PostgreSQL see `$ createuser --help`.
