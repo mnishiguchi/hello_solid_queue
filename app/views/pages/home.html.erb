@@ -8,6 +8,18 @@
 <hr>
 
 <section>
+  <h2>Register to Receive a Welcome Email</h2>
+  <form action="/registration" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <label for="name">Your Name:</label>
+    <input type="text" name="name" id="name" required>
+    <button type="submit" class="button">Register</button>
+  </form>
+</section>
+
+<hr>
+
+<section>
   <h2>Background Jobs Dashboard</h2>
   <p>Monitor and manage background jobs processed by SolidQueue.</p>
   <a href="/jobs" class="button button-outline">View Job Dashboard</a>
