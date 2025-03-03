@@ -2,8 +2,8 @@
 # check=error=true
 
 # This Dockerfile is designed for production, not development. Use with Kamal or build'n'run by hand:
-# docker build -t sample_app .
-# docker run -d -p 80:80 -e RAILS_MASTER_KEY=<value from config/master.key> --name sample_app sample_app
+# docker build -t hello_solid_queue .
+# docker run -d -p 80:80 -e RAILS_MASTER_KEY=<value from config/master.key> --name hello_solid_queue hello_solid_queue
 
 # For a containerized dev environment, see Dev Containers: https://guides.rubyonrails.org/getting_started_with_devcontainer.html
 
