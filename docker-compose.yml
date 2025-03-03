@@ -19,6 +19,20 @@ services:
       - .:/app
     ports:
       - "3000:3000"
+    environment:
+      RAILS_LOG_TO_STDOUT: "true"
+    depends_on:
+      - db
+
+  worker:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    command: ["bin/jobs"]
+    volumes:
+      - .:/app
+    environment:
+      RAILS_LOG_TO_STDOUT: "true"
     depends_on:
       - db
 
