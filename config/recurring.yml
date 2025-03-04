@@ -1,3 +1,8 @@
+development:
+  recurring_task:
+    class: "EchoJob"
+    queue: default
+    schedule: every minute
 # production:
 #   periodic_cleanup:
 #     class: CleanSoftDeletedRecordsJob
