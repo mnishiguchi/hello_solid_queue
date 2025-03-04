@@ -9,6 +9,9 @@ class JobsController < ApplicationController
     when "fail"
       FailingJob.perform_later
       flash[:alert] = "Failing job enqueued. It will intentionally fail."
+    when "retry"
+      FailingRetryJob.perform_later
+      flash[:alert] = "Failing retry job enqueued. It will fail and retry."
     when "delay"
       DelayedJob.set(wait: 5.minutes).perform_later(message: "This job runs in 5 minutes")
       flash[:info] = "Delayed job scheduled to run in 5 minutes."
@@ -22,3 +25,4 @@ class JobsController < ApplicationController
     redirect_to root_path
   end
 end
+
