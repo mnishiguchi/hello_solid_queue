@@ -1,45 +1,62 @@
-<section>
+<style>
+  .hero {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5rem;
+  }
+  .card {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  .button-primary {
+    width: 100%;
+  }
+</style>
+<section class="hero">
   <h1>Welcome to SampleApp</h1>
-  <p>
-    Peace of mind from prototype to production. Build faster, deploy easier.
-  </p>
+  <p>Peace of mind from prototype to production. Build faster, deploy easier.</p>
 </section>
-<hr>
-<section>
-  <h2>Trigger Background Jobs</h2>
-  <p>Select a job type and trigger it to see it processed in SolidQueue.</p>
-  <form action="<%= jobs_path %>" method="post">
-    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-    <label for="job_type">Choose a Job:</label>
-    <select name="job_type" id="job_type" required>
-      <option value="echo">Echo Job (Logs a Message)</option>
-      <option value="fail">Failing Job (Fails Intentionally)</option>
-      <option value="delay">Delayed Job (Runs in 5 minutes)</option>
-      <option value="priority">High-Priority Job (Urgent Task)</option>
-    </select>
-    <button type="submit" class="button">Trigger Job</button>
-  </form>
-</section>
-<hr>
-<section>
-  <h2>Register to Receive a Welcome Email</h2>
-  <form action="/registration" method="post">
-    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-    <label for="name">Your Name:</label>
-    <input type="text" name="name" id="name" required>
-    <button type="submit" class="button">Register</button>
-  </form>
-</section>
-<hr>
-<section>
-  <h2>Background Jobs Dashboard</h2>
-  <p>Monitor and manage background jobs processed by SolidQueue.</p>
-  <a href="/jobs" class="button button-outline">View Job Dashboard</a>
-  <p><strong>Login credentials:</strong> <code>admin</code> / <code>password</code></p>
-</section>
-<hr>
-<section>
-  <h2>View Sent Emails</h2>
-  <p>Check emails that have been sent during development.</p>
-  <a href="/letter_opener" class="button button-outline">Open Letter Opener</a>
-</section>
+<div class="grid">
+  <section class="card">
+    <h2>🚀 Trigger Background Jobs</h2>
+    <p>Select a job type and trigger it to see it processed in SolidQueue.</p>
+    <form action="<%= jobs_path %>" method="post">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <label for="job_type">Choose a Job:</label>
+      <select name="job_type" id="job_type" required>
+        <option value="echo">Echo Job (Logs a Message)</option>
+        <option value="fail">Failing Job (Fails Intentionally)</option>
+        <option value="delay">Delayed Job (Runs in 5 minutes)</option>
+        <option value="priority">High-Priority Job (Urgent Task)</option>
+      </select>
+      <button type="submit" class="button-primary">Trigger Job</button>
+    </form>
+  </section>
+  <section class="card">
+    <h2>📩 Register to Receive a Welcome Email</h2>
+    <form action="/registration" method="post">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <label for="name">Your Name:</label>
+      <input type="text" name="name" id="name" required>
+      <button type="submit" class="button-primary">Register</button>
+    </form>
+  </section>
+  <section class="card">
+    <h2>📊 Background Jobs Dashboard</h2>
+    <p>Monitor and manage background jobs processed by SolidQueue.</p>
+    <a href="/jobs" class="button button-outline">View Job Dashboard</a>
+    <p><strong>Login credentials:</strong> <code>admin</code> / <code>password</code></p>
+  </section>
+  <section class="card">
+    <h2>📬 View Sent Emails</h2>
+    <p>Check emails that have been sent during development.</p>
+    <a href="/letter_opener" class="button button-outline">Open Letter Opener</a>
+  </section>
+</div>
