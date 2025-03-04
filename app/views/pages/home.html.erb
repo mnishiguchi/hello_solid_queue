@@ -31,10 +31,10 @@
       <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
       <label for="job_type">Choose a Job:</label>
       <select name="job_type" id="job_type" required>
-        <option value="echo">Echo Job (Logs a Message)</option>
-        <option value="fail">Failing Job (Fails Intentionally)</option>
-        <option value="delay">Delayed Job (Runs in 5 minutes)</option>
-        <option value="priority">High-Priority Job (Urgent Task)</option>
+        <option value="priority">High Priority (Runs ASAP)</option>
+        <option value="delay">Delay (Executes in 5 Minutes)</option>
+        <option value="fail">Fail (Fails Immediately)</option>
+        <option value="retry">Retry (Fails & Retries Exponentially)</option>
       </select>
       <button type="submit" class="button-primary">Trigger Job</button>
     </form>
