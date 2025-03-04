@@ -4,9 +4,23 @@
     Peace of mind from prototype to production. Build faster, deploy easier.
   </p>
 </section>
-
 <hr>
-
+<section>
+  <h2>Trigger Background Jobs</h2>
+  <p>Select a job type and trigger it to see it processed in SolidQueue.</p>
+  <form action="<%= jobs_path %>" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <label for="job_type">Choose a Job:</label>
+    <select name="job_type" id="job_type" required>
+      <option value="echo">Echo Job (Logs a Message)</option>
+      <option value="fail">Failing Job (Fails Intentionally)</option>
+      <option value="delay">Delayed Job (Runs in 5 minutes)</option>
+      <option value="priority">High-Priority Job (Urgent Task)</option>
+    </select>
+    <button type="submit" class="button">Trigger Job</button>
+  </form>
+</section>
+<hr>
 <section>
   <h2>Register to Receive a Welcome Email</h2>
   <form action="/registration" method="post">
@@ -16,18 +30,14 @@
     <button type="submit" class="button">Register</button>
   </form>
 </section>
-
 <hr>
-
 <section>
   <h2>Background Jobs Dashboard</h2>
   <p>Monitor and manage background jobs processed by SolidQueue.</p>
   <a href="/jobs" class="button button-outline">View Job Dashboard</a>
   <p><strong>Login credentials:</strong> <code>admin</code> / <code>password</code></p>
 </section>
-
 <hr>
-
 <section>
   <h2>View Sent Emails</h2>
   <p>Check emails that have been sent during development.</p>
